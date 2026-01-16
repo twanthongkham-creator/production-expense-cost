@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
   <meta charset="UTF-8" />
-  <title>Production Expense Cost | FY2026 Dashboard</title>
+  <title>Production Expense Cost | FY2026</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- ====== STYLE ====== -->
   <style>
     :root{
       --primary:#003366;
-      --accent:#E37027;
       --bg:#f4f6f8;
       --card:#ffffff;
-      --text:#1f2937;
+      --text:#111827;
       --muted:#6b7280;
+      --border:rgba(0,0,0,.08);
+      --shadow:0 6px 18px rgba(0,0,0,.10);
+      --radius:14px;
     }
 
     *{ box-sizing:border-box; }
@@ -21,91 +22,144 @@
     body{
       margin:0;
       font-family: "Segoe UI", Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      background:var(--bg);
+      color:var(--text);
     }
 
     /* ===== HEADER ===== */
     header{
-      background: linear-gradient(90deg, var(--primary), #004c99);
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:linear-gradient(90deg,var(--primary),#0b4a8b);
       color:#fff;
-      padding:20px 32px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
+      border-bottom:1px solid rgba(255,255,255,.2);
     }
 
-    header .title{
-      font-size:22px;
-      font-weight:700;
-      letter-spacing:0.3px;
-    }
-
-    header .subtitle{
-      font-size:13px;
-      opacity:0.9;
-    }
-
-    /* ===== LAYOUT ===== */
-    main{
-      padding:24px;
+    .header-inner{
       max-width:1600px;
       margin:auto;
+      padding:16px 20px;
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
     }
 
-    .section-title{
-      font-size:18px;
-      font-weight:600;
-      margin-bottom:12px;
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
     }
 
-    .section-desc{
+    .brand .title{
+      font-size:20px;
+      font-weight:800;
+    }
+
+    .brand .sub{
+      font-size:12px;
+      opacity:.9;
+    }
+
+    /* ===== TOC ===== */
+    .toc{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .toc a{
+      text-decoration:none;
+      color:#fff;
+      font-size:12px;
+      padding:8px 12px;
+      border:1px solid rgba(255,255,255,.25);
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+    }
+
+    .toc a:hover{
+      background:rgba(255,255,255,.18);
+    }
+
+    /* ===== MAIN ===== */
+    main{
+      max-width:1600px;
+      margin:auto;
+      padding:20px;
+    }
+
+    .intro{
       font-size:14px;
       color:var(--muted);
       margin-bottom:16px;
     }
 
-    /* ===== CARD ===== */
-    .card{
+    /* ===== SECTION ===== */
+    .section{
       background:var(--card);
-      border-radius:14px;
-      padding:16px;
-      box-shadow:0 4px 16px rgba(0,0,0,0.08);
-    }
-
-    /* ===== IFRAME ===== */
-    .iframe-wrap{
-      position:relative;
-      width:100%;
-      height:80vh;
-      min-height:520px;
-      border-radius:12px;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      margin-bottom:20px;
       overflow:hidden;
     }
 
-    .iframe-wrap iframe{
+    .section-head{
+      padding:14px 16px;
+      border-bottom:1px solid var(--border);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+    }
+
+    .section-title{
+      font-size:16px;
+      font-weight:800;
+      margin:0;
+    }
+
+    .open-new{
+      font-size:12px;
+      color:var(--primary);
+      text-decoration:none;
+      border:1px solid var(--border);
+      padding:8px 12px;
+      border-radius:10px;
+      background:#fff;
+    }
+
+    .open-new:hover{
+      background:#f8fafc;
+    }
+
+    .iframe-wrap{
+      width:100%;
+      height:88vh;
+      min-height:560px;
+      background:#fff;
+    }
+
+    iframe{
       width:100%;
       height:100%;
       border:0;
     }
 
-    /* ===== FOOTER ===== */
     footer{
       text-align:center;
       font-size:12px;
       color:var(--muted);
-      padding:16px;
+      padding:16px 0;
     }
 
-    /* ===== RESPONSIVE ===== */
     @media(max-width:768px){
-      header{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:4px;
-      }
       .iframe-wrap{
-        height:70vh;
+        height:76vh;
+        min-height:520px;
       }
     }
   </style>
@@ -113,39 +167,91 @@
 
 <body>
 
-  <!-- ===== HEADER ===== -->
-  <header>
-    <div>
+<header>
+  <div class="header-inner">
+    <div class="brand">
       <div class="title">Production Expense Cost</div>
-      <div class="subtitle">FY2026 | Power BI Executive Dashboard</div>
+      <div class="sub">FY2026 | All Power BI Pages (Stacked View)</div>
     </div>
-    <div class="subtitle">
-      Data Source: Power BI
-    </div>
-  </header>
+    <nav class="toc">
+      <a href="#overview">Overview</a>
+      <a href="#reduce">Reduce Production Expense 10%</a>
+      <a href="#landfill">Waste Landfill 5%</a>
+      <a href="#sales">Waste Sales 10%</a>
+    </nav>
+  </div>
+</header>
 
-  <!-- ===== MAIN CONTENT ===== -->
-  <main>
-    <div class="section-title">Overview Dashboard</div>
-    <div class="section-desc">
-      Visualization of production expense performance, trends, and cost control analysis for FY2026.
-    </div>
+<main>
+  <div class="intro">
+    แสดงทุกหน้า (Pages) ของ Power BI เรียงลงมาด้านล่าง  
+    เหมาะสำหรับผู้บริหาร / Townhall / Review ภาพรวมทั้งโครงการ
+  </div>
 
-    <div class="card">
-      <div class="iframe-wrap">
-        <iframe 
-          title="PowerBI_Production_Expense_2026"
-          src="https://app.powerbi.com/view?r=eyJrIjoiZTM4YzdjNjMtMGIzMS00OGY4LTgwODAtMzA2ZDJmNjUyMDViIiwidCI6ImVkNDViN2Q4LWRlMTYtNDA0NS04Mzc4LTlmMDVkYjM1NzNmYyIsImMiOjEwfQ%3D%3D"
-          allowfullscreen="true">
-        </iframe>
-      </div>
+  <!-- ===== OVERVIEW ===== -->
+  <section class="section" id="overview">
+    <div class="section-head">
+      <h2 class="section-title">Overview</h2>
+      <a class="open-new" target="_blank"
+         href="https://app.powerbi.com/view?r=eyJrIjoiZTM4YzdjNjMtMGIzMS00OGY4LTgwODAtMzA2ZDJmNjUyMDViIiwidCI6ImVkNDViN2Q4LWRlMTYtNDA0NS04Mzc4LTlmMDVkYjM1NzNmYyIsImMiOjEwfQ%3D%3D&pageName=ReportSection">
+        Open
+      </a>
     </div>
-  </main>
+    <div class="iframe-wrap">
+      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiZTM4YzdjNjMtMGIzMS00OGY4LTgwODAtMzA2ZDJmNjUyMDViIiwidCI6ImVkNDViN2Q4LWRlMTYtNDA0NS04Mzc4LTlmMDVkYjM1NzNmYyIsImMiOjEwfQ%3D%3D&pageName=ReportSection"
+              allowfullscreen="true"></iframe>
+    </div>
+  </section>
 
-  <!-- ===== FOOTER ===== -->
+  <!-- ===== REDUCE ===== -->
+  <section class="section" id="reduce">
+    <div class="section-head">
+      <h2 class="section-title">Reduce Production Expense 10%</h2>
+      <a class="open-new" target="_blank"
+         href="https://app.powerbi.com/view?r=eyJrIjoiZTM4YzdjNjMtMGIzMS00OGY4LTgwODAtMzA2ZDJmNjUyMDViIiwidCI6ImVkNDViN2Q4LWRlMTYtNDA0NS04Mzc4LTlmMDVkYjM1NzNmYyIsImMiOjEwfQ%3D%3D&pageName=ReportSection2">
+        Open
+      </a>
+    </div>
+    <div class="iframe-wrap">
+      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiZTM4YzdjNjMtMGIzMS00OGY4LTgwODAtMzA2ZDJmNjUyMDViIiwidCI6ImVkNDViN2Q4LWRlMTYtNDA0NS04Mzc4LTlmMDVkYjM1NzNmYyIsImMiOjEwfQ%3D%3D&pageName=ReportSection2"
+              allowfullscreen="true"></iframe>
+    </div>
+  </section>
+
+  <!-- ===== LANDFILL ===== -->
+  <section class="section" id="landfill">
+    <div class="section-head">
+      <h2 class="section-title">Waste Landfill 5%</h2>
+      <a class="open-new" target="_blank"
+         href="https://app.powerbi.com/view?r=eyJrIjoiZTM4YzdjNjMtMGIzMS00OGY4LTgwODAtMzA2ZDJmNjUyMDViIiwidCI6ImVkNDViN2Q4LWRlMTYtNDA0NS04Mzc4LTlmMDVkYjM1NzNmYyIsImMiOjEwfQ%3D%3D&pageName=ReportSection3">
+        Open
+      </a>
+    </div>
+    <div class="iframe-wrap">
+      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiZTM4YzdjNjMtMGIzMS00OGY4LTgwODAtMzA2ZDJmNjUyMDViIiwidCI6ImVkNDViN2Q4LWRlMTYtNDA0NS04Mzc4LTlmMDVkYjM1NzNmYyIsImMiOjEwfQ%3D%3D&pageName=ReportSection3"
+              allowfullscreen="true"></iframe>
+    </div>
+  </section>
+
+  <!-- ===== WASTE SALES ===== -->
+  <section class="section" id="sales">
+    <div class="section-head">
+      <h2 class="section-title">Waste Sales 10%</h2>
+      <a class="open-new" target="_blank"
+         href="https://app.powerbi.com/view?r=eyJrIjoiZTM4YzdjNjMtMGIzMS00OGY4LTgwODAtMzA2ZDJmNjUyMDViIiwidCI6ImVkNDViN2Q4LWRlMTYtNDA0NS04Mzc4LTlmMDVkYjM1NzNmYyIsImMiOjEwfQ%3D%3D&pageName=ReportSection4">
+        Open
+      </a>
+    </div>
+    <div class="iframe-wrap">
+      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiZTM4YzdjNjMtMGIzMS00OGY4LTgwODAtMzA2ZDJmNjUyMDViIiwidCI6ImVkNDViN2Q4LWRlMTYtNDA0NS04Mzc4LTlmMDVkYjM1NzNmYyIsImMiOjEwfQ%3D%3D&pageName=ReportSection4"
+              allowfullscreen="true"></iframe>
+    </div>
+  </section>
+
   <footer>
-    © 2026 Production Expense Cost Project | Smart Warehouse & OI Digital Initiative
+    © 2026 Production Expense Cost Project
   </footer>
+</main>
 
 </body>
 </html>
