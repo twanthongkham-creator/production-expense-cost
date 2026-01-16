@@ -6,161 +6,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
-    :root{
-      --primary:#003366;
-      --bg:#f4f6f8;
-      --card:#ffffff;
-      --text:#111827;
-      --muted:#6b7280;
-      --border:rgba(0,0,0,.08);
-      --shadow:0 6px 18px rgba(0,0,0,.10);
-      --radius:14px;
-    }
-
-    *{ box-sizing:border-box; }
-
     body{
       margin:0;
-      font-family: "Segoe UI", Arial, sans-serif;
-      background:var(--bg);
-      color:var(--text);
+      font-family:Segoe UI, Arial, sans-serif;
+      background:#f4f6f8;
     }
-
-    /* ===== HEADER ===== */
     header{
       position:sticky;
       top:0;
-      z-index:100;
-      background:linear-gradient(90deg,var(--primary),#0b4a8b);
+      background:#003366;
       color:#fff;
-      border-bottom:1px solid rgba(255,255,255,.2);
-    }
-
-    .header-inner{
-      max-width:1600px;
-      margin:auto;
       padding:16px 20px;
-      display:flex;
-      flex-wrap:wrap;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
+      z-index:100;
     }
-
-    .brand{
-      display:flex;
-      flex-direction:column;
-      gap:2px;
-    }
-
-    .brand .title{
+    header h1{
+      margin:0;
       font-size:20px;
-      font-weight:800;
     }
-
-    .brand .sub{
+    header p{
+      margin:4px 0 0;
       font-size:12px;
       opacity:.9;
     }
-
-    /* ===== TOC ===== */
-    .toc{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-    }
-
-    .toc a{
-      text-decoration:none;
-      color:#fff;
-      font-size:12px;
-      padding:8px 12px;
-      border:1px solid rgba(255,255,255,.25);
-      border-radius:999px;
-      background:rgba(255,255,255,.08);
-    }
-
-    .toc a:hover{
-      background:rgba(255,255,255,.18);
-    }
-
-    /* ===== MAIN ===== */
     main{
       max-width:1600px;
       margin:auto;
       padding:20px;
     }
-
-    .intro{
-      font-size:14px;
-      color:var(--muted);
-      margin-bottom:16px;
-    }
-
-    /* ===== SECTION ===== */
-    .section{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      margin-bottom:20px;
+    section{
+      background:#fff;
+      border-radius:14px;
+      box-shadow:0 6px 18px rgba(0,0,0,.1);
+      margin-bottom:24px;
       overflow:hidden;
     }
-
     .section-head{
       padding:14px 16px;
-      border-bottom:1px solid var(--border);
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-    }
-
-    .section-title{
+      border-bottom:1px solid #eee;
+      font-weight:700;
       font-size:16px;
-      font-weight:800;
-      margin:0;
     }
-
-    .open-new{
-      font-size:12px;
-      color:var(--primary);
-      text-decoration:none;
-      border:1px solid var(--border);
-      padding:8px 12px;
-      border-radius:10px;
-      background:#fff;
-    }
-
-    .open-new:hover{
-      background:#f8fafc;
-    }
-
     .iframe-wrap{
-      width:100%;
-      height:88vh;
+      height:90vh;
       min-height:560px;
-      background:#fff;
     }
-
     iframe{
       width:100%;
       height:100%;
       border:0;
-    }
-
-    footer{
-      text-align:center;
-      font-size:12px;
-      color:var(--muted);
-      padding:16px 0;
-    }
-
-    @media(max-width:768px){
-      .iframe-wrap{
-        height:76vh;
-        min-height:520px;
-      }
     }
   </style>
 </head>
@@ -168,89 +61,52 @@
 <body>
 
 <header>
-  <div class="header-inner">
-    <div class="brand">
-      <div class="title">Production Expense Cost</div>
-      <div class="sub">FY2026 | All Power BI Pages (Stacked View)</div>
-    </div>
-    <nav class="toc">
-      <a href="#overview">Overview</a>
-      <a href="#reduce">Reduce Production Expense 10%</a>
-      <a href="#landfill">Waste Landfill 5%</a>
-      <a href="#sales">Waste Sales 10%</a>
-    </nav>
-  </div>
+  <h1>Production Expense Cost</h1>
+  <p>FY2026 | All Power BI Pages (Stacked View)</p>
 </header>
 
 <main>
-  <div class="intro">
-    แสดงทุกหน้า (Pages) ของ Power BI เรียงลงมาด้านล่าง  
-    เหมาะสำหรับผู้บริหาร / Townhall / Review ภาพรวมทั้งโครงการ
-  </div>
 
-  <!-- ===== OVERVIEW ===== -->
-  <section class="section" id="overview">
-    <div class="section-head">
-      <h2 class="section-title">Overview</h2>
-      <a class="open-new" target="_blank"
-         href="https://app.powerbi.com/view?r=eyJrIjoiZTM4YzdjNjMtMGIzMS00OGY4LTgwODAtMzA2ZDJmNjUyMDViIiwidCI6ImVkNDViN2Q4LWRlMTYtNDA0NS04Mzc4LTlmMDVkYjM1NzNmYyIsImMiOjEwfQ%3D%3D&pageName=ReportSection">
-        Open
-      </a>
-    </div>
+  <!-- Overview -->
+  <section>
+    <div class="section-head">Overview</div>
     <div class="iframe-wrap">
-      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiZTM4YzdjNjMtMGIzMS00OGY4LTgwODAtMzA2ZDJmNjUyMDViIiwidCI6ImVkNDViN2Q4LWRlMTYtNDA0NS04Mzc4LTlmMDVkYjM1NzNmYyIsImMiOjEwfQ%3D%3D&pageName=ReportSection"
-              allowfullscreen="true"></iframe>
+      <iframe
+        src="https://app.powerbi.com/view?r=eyJrIjoiZTM4YzdjNjMtMGIzMS00OGY4LTgwODAtMzA2ZDJmNjUyMDViIiwidCI6ImVkNDViN2Q4LWRlMTYtNDA0NS04Mzc4LTlmMDVkYjM1NzNmYyIsImMiOjEwfQ%3D%3D&pageName=ReportSection">
+      </iframe>
     </div>
   </section>
 
-  <!-- ===== REDUCE ===== -->
-  <section class="section" id="reduce">
-    <div class="section-head">
-      <h2 class="section-title">Reduce Production Expense 10%</h2>
-      <a class="open-new" target="_blank"
-         href="https://app.powerbi.com/view?r=eyJrIjoiZTM4YzdjNjMtMGIzMS00OGY4LTgwODAtMzA2ZDJmNjUyMDViIiwidCI6ImVkNDViN2Q4LWRlMTYtNDA0NS04Mzc4LTlmMDVkYjM1NzNmYyIsImMiOjEwfQ%3D%3D&pageName=ReportSection2">
-        Open
-      </a>
-    </div>
+  <!-- Reduce Production Expense 10% -->
+  <section>
+    <div class="section-head">Reduce Production Expense 10%</div>
     <div class="iframe-wrap">
-      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiZTM4YzdjNjMtMGIzMS00OGY4LTgwODAtMzA2ZDJmNjUyMDViIiwidCI6ImVkNDViN2Q4LWRlMTYtNDA0NS04Mzc4LTlmMDVkYjM1NzNmYyIsImMiOjEwfQ%3D%3D&pageName=ReportSection2"
-              allowfullscreen="true"></iframe>
+      <iframe
+        src="https://app.powerbi.com/view?r=eyJrIjoiZTM4YzdjNjMtMGIzMS00OGY4LTgwODAtMzA2ZDJmNjUyMDViIiwidCI6ImVkNDViN2Q4LWRlMTYtNDA0NS04Mzc4LTlmMDVkYjM1NzNmYyIsImMiOjEwfQ%3D%3D&pageName=PUT_REAL_ReportSection_ID_HERE">
+      </iframe>
     </div>
   </section>
 
-  <!-- ===== LANDFILL ===== -->
-  <section class="section" id="landfill">
-    <div class="section-head">
-      <h2 class="section-title">Waste Landfill 5%</h2>
-      <a class="open-new" target="_blank"
-         href="https://app.powerbi.com/view?r=eyJrIjoiZTM4YzdjNjMtMGIzMS00OGY4LTgwODAtMzA2ZDJmNjUyMDViIiwidCI6ImVkNDViN2Q4LWRlMTYtNDA0NS04Mzc4LTlmMDVkYjM1NzNmYyIsImMiOjEwfQ%3D%3D&pageName=ReportSection3">
-        Open
-      </a>
-    </div>
+  <!-- Waste Landfill 5% -->
+  <section>
+    <div class="section-head">Waste Landfill 5%</div>
     <div class="iframe-wrap">
-      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiZTM4YzdjNjMtMGIzMS00OGY4LTgwODAtMzA2ZDJmNjUyMDViIiwidCI6ImVkNDViN2Q4LWRlMTYtNDA0NS04Mzc4LTlmMDVkYjM1NzNmYyIsImMiOjEwfQ%3D%3D&pageName=ReportSection3"
-              allowfullscreen="true"></iframe>
+      <iframe
+        src="https://app.powerbi.com/view?r=eyJrIjoiZTM4YzdjNjMtMGIzMS00OGY4LTgwODAtMzA2ZDJmNjUyMDViIiwidCI6ImVkNDViN2Q4LWRlMTYtNDA0NS04Mzc4LTlmMDVkYjM1NzNmYyIsImMiOjEwfQ%3D%3D&pageName=PUT_REAL_ReportSection_ID_HERE">
+      </iframe>
     </div>
   </section>
 
-  <!-- ===== WASTE SALES ===== -->
-  <section class="section" id="sales">
-    <div class="section-head">
-      <h2 class="section-title">Waste Sales 10%</h2>
-      <a class="open-new" target="_blank"
-         href="https://app.powerbi.com/view?r=eyJrIjoiZTM4YzdjNjMtMGIzMS00OGY4LTgwODAtMzA2ZDJmNjUyMDViIiwidCI6ImVkNDViN2Q4LWRlMTYtNDA0NS04Mzc4LTlmMDVkYjM1NzNmYyIsImMiOjEwfQ%3D%3D&pageName=ReportSection4">
-        Open
-      </a>
-    </div>
+  <!-- Waste Sales 10% -->
+  <section>
+    <div class="section-head">Waste Sales 10%</div>
     <div class="iframe-wrap">
-      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiZTM4YzdjNjMtMGIzMS00OGY4LTgwODAtMzA2ZDJmNjUyMDViIiwidCI6ImVkNDViN2Q4LWRlMTYtNDA0NS04Mzc4LTlmMDVkYjM1NzNmYyIsImMiOjEwfQ%3D%3D&pageName=ReportSection4"
-              allowfullscreen="true"></iframe>
+      <iframe
+        src="https://app.powerbi.com/view?r=eyJrIjoiZTM4YzdjNjMtMGIzMS00OGY4LTgwODAtMzA2ZDJmNjUyMDViIiwidCI6ImVkNDViN2Q4LWRlMTYtNDA0NS04Mzc4LTlmMDVkYjM1NzNmYyIsImMiOjEwfQ%3D%3D&pageName=PUT_REAL_ReportSection_ID_HERE">
+      </iframe>
     </div>
   </section>
 
-  <footer>
-    © 2026 Production Expense Cost Project
-  </footer>
 </main>
 
 </body>
