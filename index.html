@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Production Expense Cost | FY2026 Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ====== STYLE ====== -->
+  <style>
+    :root{
+      --primary:#003366;
+      --accent:#E37027;
+      --bg:#f4f6f8;
+      --card:#ffffff;
+      --text:#1f2937;
+      --muted:#6b7280;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    /* ===== HEADER ===== */
+    header{
+      background: linear-gradient(90deg, var(--primary), #004c99);
+      color:#fff;
+      padding:20px 32px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    header .title{
+      font-size:22px;
+      font-weight:700;
+      letter-spacing:0.3px;
+    }
+
+    header .subtitle{
+      font-size:13px;
+      opacity:0.9;
+    }
+
+    /* ===== LAYOUT ===== */
+    main{
+      padding:24px;
+      max-width:1600px;
+      margin:auto;
+    }
+
+    .section-title{
+      font-size:18px;
+      font-weight:600;
+      margin-bottom:12px;
+    }
+
+    .section-desc{
+      font-size:14px;
+      color:var(--muted);
+      margin-bottom:16px;
+    }
+
+    /* ===== CARD ===== */
+    .card{
+      background:var(--card);
+      border-radius:14px;
+      padding:16px;
+      box-shadow:0 4px 16px rgba(0,0,0,0.08);
+    }
+
+    /* ===== IFRAME ===== */
+    .iframe-wrap{
+      position:relative;
+      width:100%;
+      height:80vh;
+      min-height:520px;
+      border-radius:12px;
+      overflow:hidden;
+    }
+
+    .iframe-wrap iframe{
+      width:100%;
+      height:100%;
+      border:0;
+    }
+
+    /* ===== FOOTER ===== */
+    footer{
+      text-align:center;
+      font-size:12px;
+      color:var(--muted);
+      padding:16px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:768px){
+      header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:4px;
+      }
+      .iframe-wrap{
+        height:70vh;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div>
+      <div class="title">Production Expense Cost</div>
+      <div class="subtitle">FY2026 | Power BI Executive Dashboard</div>
+    </div>
+    <div class="subtitle">
+      Data Source: Power BI
+    </div>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main>
+    <div class="section-title">Overview Dashboard</div>
+    <div class="section-desc">
+      Visualization of production expense performance, trends, and cost control analysis for FY2026.
+    </div>
+
+    <div class="card">
+      <div class="iframe-wrap">
+        <iframe 
+          title="PowerBI_Production_Expense_2026"
+          src="https://app.powerbi.com/view?r=eyJrIjoiZTM4YzdjNjMtMGIzMS00OGY4LTgwODAtMzA2ZDJmNjUyMDViIiwidCI6ImVkNDViN2Q4LWRlMTYtNDA0NS04Mzc4LTlmMDVkYjM1NzNmYyIsImMiOjEwfQ%3D%3D"
+          allowfullscreen="true">
+        </iframe>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    © 2026 Production Expense Cost Project | Smart Warehouse & OI Digital Initiative
+  </footer>
+
+</body>
+</html>
